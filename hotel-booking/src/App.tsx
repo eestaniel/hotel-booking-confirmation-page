@@ -1,11 +1,14 @@
 import { Home } from './pages/Home'
+import { SiteNavigation } from './components/SiteNavigation/SiteNavigation'
 import styles from './styles/App.module.css'
 
 export const App = () => {
     return (
-        <main className={styles.main}>
-            <Home />
-        </main>
+        <div className={styles.app}>
+            <SiteNavigation>
+                <Home />
+            </SiteNavigation>
+        </div>
     )
 }
 

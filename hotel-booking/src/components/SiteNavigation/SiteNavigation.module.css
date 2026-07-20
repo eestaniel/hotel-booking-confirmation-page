@@ -1,0 +1,403 @@
+/* ===== Shell ===== */
+
+.shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+@media (min-width: 1024px) {
+    .shell {
+        flex-direction: row;
+    }
+}
+
+/* ===== Background (inert container for mobile/tablet) ===== */
+
+.background {
+    display: contents;
+}
+
+@media (min-width: 1024px) {
+    .background {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+/* ===== Desktop Sidebar ===== */
+
+.sidebar {
+    display: none;
+    width: 260px;
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 16px;
+    border-right: 1px solid var(--neutral-400);
+    padding: 20px 16px;
+    overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        display: flex;
+    }
+}
+
+/* ===== Mobile Header ===== */
+
+.mobileHeader {
+    display: block;
+}
+
+@media (min-width: 1024px) {
+    .mobileHeader {
+        display: none;
+    }
+}
+
+/* ===== App Bar ===== */
+
+.appBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 74px;
+    padding: 16px;
+    border-bottom: 1px solid var(--neutral-400);
+}
+
+/* ===== Menu Button ===== */
+
+.menuButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--neutral-400);
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Expand touch target to 44px without changing visual size */
+.menuButton::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+}
+
+.menuButton:hover {
+    background: var(--neutral-200);
+}
+
+.menuButton:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: 2px;
+}
+
+/* ===== Drawer Overlay ===== */
+
+.drawerOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: hsl(33 15% 15% / 0.5);
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media (min-width: 1024px) {
+    .drawerOverlay {
+        display: none;
+    }
+}
+
+/* ===== Drawer ===== */
+
+.drawer {
+    width: min(24rem, calc(100vw - 55px));
+    height: 100dvh;
+    background: var(--neutral-100);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 200ms ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .drawer {
+        animation: none;
+    }
+}
+
+.drawerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.drawerDivider {
+    margin: 0 16px;
+    border: none;
+    border-top: 1px solid var(--neutral-400);
+}
+
+.drawerContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 16px 16px 24px;
+}
+
+@media (min-width: 768px) {
+    .drawerContent {
+        padding: 24px 24px 24px;
+    }
+}
+
+.drawerCloseButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--neutral-400);
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Expand touch target to 44px without changing visual size */
+.drawerCloseButton::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+}
+
+.drawerCloseButton:hover {
+    background: var(--neutral-200);
+}
+
+.drawerCloseButton:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: 2px;
+}
+
+/* ===== Body Lock (defined in global.css) ===== */
+
+/* ===== Content Area ===== */
+
+.content {
+    /* Natural flow on mobile; fills remaining width on desktop */
+}
+
+@media (min-width: 1024px) {
+    .content {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+/* ===== Navigation Panel (shared) ===== */
+
+.navPanel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 24px;
+}
+
+/* ===== Logo ===== */
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logo:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ===== Primary Nav ===== */
+
+.nav {
+    /* container */
+}
+
+.navList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--neutral-800);
+    font-family: var(--text-preset-5-medium-font);
+    font-size: var(--text-preset-5-medium-size);
+    font-weight: var(--text-preset-5-medium-weight);
+    line-height: var(--text-preset-5-medium-leading);
+    letter-spacing: var(--text-preset-5-medium-tracking);
+    transition: background-color 150ms ease;
+}
+
+.navLink:hover {
+    background: var(--neutral-200);
+}
+
+.navLink:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: 2px;
+}
+
+.navLinkActive {
+    background: var(--neutral-200);
+    position: relative;
+}
+
+.navIcon {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.navLinkActive .navIcon {
+    opacity: 1;
+}
+
+.navLabel {
+    flex: 1;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--terracotta-600);
+    color: var(--neutral-0);
+    font-family: var(--text-preset-10-font);
+    font-size: var(--text-preset-10-size);
+    font-weight: var(--text-preset-10-weight);
+    line-height: 1;
+    letter-spacing: var(--text-preset-10-tracking);
+    text-transform: var(--text-preset-10-transform);
+}
+
+/* ===== Weather Card ===== */
+
+.weatherCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: var(--sun-300);
+    box-shadow:
+        0 10px 24px -16px hsl(15 69% 37% / 0.4),
+        0 1px 0 hsl(0 0% 0% / 0.04);
+}
+
+.weatherIcon {
+    position: absolute;
+    top: -28px;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.weatherInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.weatherLocation {
+    font-family: var(--text-preset-10-font);
+    font-size: var(--text-preset-10-size);
+    font-weight: var(--text-preset-10-weight);
+    line-height: var(--text-preset-10-leading);
+    letter-spacing: var(--text-preset-10-tracking);
+    text-transform: var(--text-preset-10-transform);
+    color: var(--neutral-700);
+}
+
+.weatherTemp {
+    font-family: var(--text-preset-2-font);
+    font-size: var(--text-preset-2-size);
+    font-weight: var(--text-preset-2-weight);
+    line-height: var(--text-preset-2-leading);
+    letter-spacing: var(--text-preset-2-tracking);
+    color: var(--neutral-800);
+}
+
+.weatherDesc {
+    font-family: var(--text-preset-7-font);
+    font-size: var(--text-preset-7-size);
+    font-weight: var(--text-preset-7-weight);
+    line-height: var(--text-preset-7-leading);
+    letter-spacing: var(--text-preset-7-tracking);
+    color: var(--neutral-700);
+}
+
+/* ===== Footer (weather card + info) ===== */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: auto;
+    overflow: hidden;
+}
+
+.footerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--neutral-400);
+}
+
+.footerLine {
+    font-family: var(--text-preset-10-font);
+    font-size: var(--text-preset-10-size);
+    font-weight: var(--text-preset-10-weight);
+    line-height: var(--text-preset-10-leading);
+    letter-spacing: var(--text-preset-10-tracking);
+    text-transform: var(--text-preset-10-transform);
+    color: var(--neutral-600);
+}
