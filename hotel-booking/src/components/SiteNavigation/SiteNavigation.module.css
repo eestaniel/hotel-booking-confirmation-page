@@ -17,7 +17,9 @@
 @media (min-width: 1024px) {
     .shell {
         flex-direction: row;
+        align-items: center;
         gap: 0;
+        overflow: clip;
     }
 }
 
@@ -27,32 +29,44 @@
     display: contents;
 }
 
-@media (min-width: 1024px) {
-    .background {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        min-width: 0;
-    }
-}
-
 /* ===== Desktop Sidebar ===== */
 
 .sidebar {
     display: none;
     width: 260px;
-    flex-shrink: 0;
+    flex: 0 0 260px;
     flex-direction: column;
-    gap: 16px;
-    border-right: 1px solid var(--neutral-400);
+    align-items: flex-start;
+    gap: 0;
+    min-height: 100dvh;
+    box-shadow: inset -1px 0 var(--neutral-400);
     padding: 20px 16px;
-    overflow-y: auto;
+    overflow: visible;
 }
 
 @media (min-width: 1024px) {
     .sidebar {
         display: flex;
     }
+}
+
+.sidebarHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    width: 100%;
+    height: 724px;
+    flex: 0 0 724px;
+    overflow: visible;
+}
+
+.sidebarDivider {
+    width: 100%;
+    height: 1px;
+    flex: 0 0 auto;
+    background: var(--neutral-400);
 }
 
 /* ===== Mobile Header ===== */
@@ -256,14 +270,7 @@
 /* ===== Content Area ===== */
 
 .content {
-    /* Natural flow on mobile; fills remaining width on desktop */
-}
-
-@media (min-width: 1024px) {
-    .content {
-        flex: 1;
-        min-width: 0;
-    }
+    display: contents;
 }
 
 /* ===== Navigation Panel (shared) ===== */
@@ -331,7 +338,7 @@
     padding: 10px 12px;
     border-radius: 8px;
     text-decoration: none;
-    color: var(--neutral-800);
+    color: var(--neutral-700);
     font-family: var(--text-preset-5-medium-font);
     font-size: var(--text-preset-5-medium-size);
     font-weight: var(--text-preset-5-medium-weight);
@@ -357,8 +364,12 @@
 }
 
 .navLinkActive {
-    background: var(--neutral-200);
+    background: var(--neutral-0);
+    box-shadow:
+        0 0.0625rem 0.1875rem rgb(62 44 30 / 3%),
+        inset 0 0 0 1px rgb(62 44 30 / 8%);
     position: relative;
+    color: var(--neutral-900);
 }
 
 .navIconWrapper {
@@ -396,13 +407,13 @@
     padding: 0;
     border-radius: 999px;
     background: var(--terracotta-600);
-    color: var(--neutral-0);
-    font-family: var(--text-preset-10-font);
-    font-size: var(--text-preset-10-size);
-    font-weight: var(--text-preset-10-weight);
-    line-height: 1;
-    letter-spacing: var(--text-preset-10-tracking);
-    text-transform: var(--text-preset-10-transform);
+    color: #fbf6ef;
+    font-family: var(--text-preset-11-font);
+    font-size: var(--text-preset-11-size);
+    font-weight: var(--text-preset-11-weight);
+    line-height: var(--text-preset-11-leading);
+    letter-spacing: var(--text-preset-11-tracking);
+    text-transform: var(--text-preset-11-transform);
 }
 
 /* ===== Weather Card ===== */
@@ -421,7 +432,7 @@
     border-radius: 16px;
     background: var(--sun-300);
     box-shadow:
-        0 10px 24px -16px hsl(15 69% 37% / 0.4),
+        0 10px 24px -16px rgb(194 90 46 / 40%),
         0 1px 0 hsl(0 0% 0% / 0.04);
     overflow: hidden;
 }
@@ -429,7 +440,7 @@
 .weatherIconWrapper {
     position: absolute;
     top: -28px;
-    right: -10px;
+    right: -14px;
     width: 80px;
     height: 80px;
     flex: 0 0 auto;
@@ -459,7 +470,7 @@
     font-weight: var(--text-preset-2-weight);
     line-height: var(--text-preset-2-leading);
     letter-spacing: var(--text-preset-2-tracking);
-    color: var(--neutral-800);
+    color: var(--neutral-900);
 }
 
 .weatherDesc {
@@ -480,20 +491,33 @@
     justify-content: flex-start;
     gap: 20px;
     width: 100%;
+    height: 214px;
+    flex: 0 0 214px;
     margin-top: auto;
     overflow: visible;
 }
 
 .footerInfo {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 10px;
     width: 100%;
-    padding-top: 15px;
-    border-top: 1px dashed var(--neutral-400);
+    height: 92px;
+    flex: 0 0 92px;
+    padding-top: 1rem;
+    border-top: 0;
     overflow: visible;
+}
+
+.footerInfo::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--neutral-400) 0 3px, transparent 3px 6px);
 }
 
 .footerLine {

@@ -92,6 +92,16 @@ function NavigationPanelContent() {
     )
 }
 
+function SidebarHeader() {
+    return (
+        <div className={styles.sidebarHeader}>
+            <Logo />
+            <div className={styles.sidebarDivider} aria-hidden='true' />
+            <PrimaryNav />
+        </div>
+    )
+}
+
 function AppBar({
     onMenuClick,
     menuOpen,
@@ -245,8 +255,8 @@ function MobileDrawer({
 function DesktopSidebar() {
     return (
         <aside className={styles.sidebar}>
-            <Logo />
-            <NavigationPanelContent />
+            <SidebarHeader />
+            <Footer />
         </aside>
     )
 }
