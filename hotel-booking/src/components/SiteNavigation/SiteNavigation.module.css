@@ -408,7 +408,7 @@
     padding: 0;
     border-radius: 999px;
     background: var(--terracotta-600);
-    color: #fbf6ef;
+    color: var(--surface-primary);
     font-family: var(--text-preset-11-font);
     font-size: var(--text-preset-11-size);
     font-weight: var(--text-preset-11-weight);

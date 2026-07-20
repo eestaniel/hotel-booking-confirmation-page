@@ -192,3 +192,9 @@
     line-height: var(--text-preset-4-leading);
     letter-spacing: var(--text-preset-4-tracking);
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+}

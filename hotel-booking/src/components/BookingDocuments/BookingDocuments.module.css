@@ -160,3 +160,23 @@
         cursor: pointer;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .sunWrapper {
+        transition: none;
+    }
+
+    .container:hover > :first-child {
+        rotate: none;
+        translate: none;
+    }
+
+    .container:hover > :last-child {
+        rotate: none;
+        translate: none;
+    }
+
+    .container:hover .sunWrapper {
+        transform: translate(-50%, -50%);
+    }
+}

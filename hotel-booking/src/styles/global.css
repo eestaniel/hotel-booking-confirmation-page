@@ -71,6 +71,12 @@
     /* Colors - Rose */
     --rose-500: hsl(340, 48%, 52%);
 
+    /* Colors - Surface */
+    --surface-primary: #fbf6ef;
+
+    /* Dividers */
+    --divider-dashed: repeating-linear-gradient(90deg, var(--neutral-400) 0 3px, transparent 3px 5px);
+
     /* Font Families */
     --font-fraunces: 'Fraunces', serif;
     --font-dm-sans: 'DM Sans', sans-serif;

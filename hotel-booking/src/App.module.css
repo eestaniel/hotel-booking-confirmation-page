@@ -1,4 +1,4 @@
 .app {
     min-height: 100dvh;
-    background-color: #fbf6ef;
+    background-color: var(--surface-primary);
 }
