@@ -5,7 +5,9 @@ export const BookingHeader = () => {
         <header className={styles.header}>
             <div className={styles.headerInfo}>
                 <p className={styles.status}>Booking · Confirmed</p>
-                <h1 className={styles.heading}>Bienvenue, Lucia.</h1>
+                <h1 className={styles.heading}>
+                    Bienvenue, <em className={styles.headingAccent}>Lucia.</em>
+                </h1>
             </div>
             <div className={styles.actions}>
                 <button type='button' className={styles.btnOutline}>

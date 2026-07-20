@@ -18,7 +18,7 @@
         0 0.0625rem 0 rgb(0 0 0 / 3%);
     color: var(--neutral-900);
     overflow: hidden;
-    transform: rotate(2deg);
+    transform: rotate(-2deg);
     margin-top: 1.4105rem;
     align-items: flex-start;
     justify-content: flex-start;
@@ -28,9 +28,19 @@
     .card {
         width: 21.25rem;
         height: 26.25rem;
-        transform: rotate(4deg);
+        transform: rotate(-4deg);
         margin-top: 0;
         margin-left: -1.875rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card {
+        width: 25rem;
+        height: 26.25rem;
+        transform: rotate(-4deg);
+        margin-top: 0;
+        margin-left: -2.1875rem;
     }
 }
 
@@ -64,15 +74,26 @@
 /* ===== Header — horizontal: text left, ref right ===== */
 
 .header {
+    position: relative;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 0;
     width: 100%;
     height: 3.625rem;
     flex: 0 0 auto;
-    padding-bottom: 0.6875rem;
-    border-bottom: 1px dashed var(--neutral-400);
+    padding-bottom: 0.75rem;
+    border-bottom: 0;
     overflow: visible;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--neutral-400) 0 3px, transparent 3px 5px);
 }
 
 .headerText {
@@ -82,6 +103,10 @@
     width: 13.25rem;
     flex: 0 0 13.25rem;
     min-width: 0;
+}
+
+.ref {
+    text-align: right;
 }
 
 .label {
@@ -141,6 +166,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     gap: 0.5rem;
     overflow: visible;
 }
@@ -194,6 +220,7 @@
 
 .dateSupplementary {
     display: flex;
+    flex-direction: row;
     gap: 0.25rem;
     width: max-content;
     font-family: var(--text-preset-7-font);
@@ -213,23 +240,35 @@
 /* ===== Line items ===== */
 
 .lineItems {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
     height: 5.5rem;
     flex: 0 0 auto;
-    padding-top: 0.6875rem;
-    border-top: 1px dashed var(--neutral-400);
+    padding-top: 0.75rem;
+    border-top: 0;
     align-items: stretch;
     justify-content: flex-start;
     overflow: visible;
 }
 
+.lineItems::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--neutral-400) 0 3px, transparent 3px 5px);
+}
+
 .lineItem {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 0;
+    width: 100%;
     height: 1.25rem;
     flex: 0 0 auto;
 }
@@ -262,15 +301,26 @@
 /* ===== Total ===== */
 
 .total {
+    position: relative;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 0;
     width: 100%;
     height: 2.875rem;
     flex: 0 0 auto;
-    padding-top: 0.6875rem;
-    border-top: 1px solid var(--neutral-600);
+    padding-top: 0.75rem;
+    border-top: 0;
     overflow: visible;
+}
+
+.total::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: var(--neutral-600);
 }
 
 .totalLabel {
@@ -296,8 +346,10 @@
 
 .footer {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap: 0;
     width: 100%;
     height: 1.75rem;
     flex: 0 0 auto;
@@ -332,5 +384,12 @@
     .headerText {
         width: 14.0625rem;
         flex-basis: 14.0625rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .headerText {
+        width: 17.8125rem;
+        flex-basis: 17.8125rem;
     }
 }

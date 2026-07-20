@@ -42,7 +42,9 @@
 
 @media (min-width: 1024px) {
     .header {
-        padding: 40px 0 0;
+        flex-direction: row;
+        gap: 0;
+        padding: 0;
     }
 }
 
@@ -71,10 +73,16 @@
     color: var(--neutral-900);
 }
 
+.headingAccent {
+    color: var(--terracotta-600);
+    font-style: italic;
+}
+
 /* ===== Action Buttons ===== */
 
 .actions {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     gap: 16px;
