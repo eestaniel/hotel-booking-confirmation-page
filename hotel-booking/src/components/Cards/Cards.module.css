@@ -162,6 +162,7 @@
 }
 
 .detailTitle {
+    width: 100%;
     font-family: var(--text-preset-3-font);
     font-size: var(--text-preset-3-size);
     font-weight: var(--text-preset-3-weight);
@@ -171,6 +172,7 @@
 }
 
 .detailSubtitle {
+    width: 100%;
     font-family: var(--text-preset-7-font);
     font-size: var(--text-preset-7-size);
     font-weight: var(--text-preset-7-weight);
@@ -182,6 +184,7 @@
 /* ===== Instructions Text ===== */
 
 .instructions {
+    width: 100%;
     font-family: var(--text-preset-5-font);
     font-size: var(--text-preset-5-size);
     font-weight: var(--text-preset-5-weight);

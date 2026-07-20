@@ -5,7 +5,9 @@
     flex-direction: column;
     gap: 0.625rem;
     align-items: center;
+    justify-content: flex-start;
     width: 100%;
+    flex: 0 0 auto;
     padding: 0;
     overflow: visible;
 }
