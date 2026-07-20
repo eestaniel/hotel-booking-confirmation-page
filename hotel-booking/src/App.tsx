@@ -1,6 +1,6 @@
-import { Home } from './pages/Home'
+import { Home } from './pages/home/Home'
 import { SiteNavigation } from './components/SiteNavigation/SiteNavigation'
-import styles from './styles/App.module.css'
+import styles from './App.module.css'
 
 export const App = () => {
     return (
