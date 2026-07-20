@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback, type ComponentPropsWithoutRef } from 'react'
 import styles from './SiteNavigation.module.css'
+import { DecorativeIcon } from '../DecorativeIcon/DecorativeIcon'
 
 import logoUrl from '../../assets/images/logo.svg'
 import iconBedUrl from '../../assets/images/icon-bed.svg'
@@ -46,9 +47,11 @@ function PrimaryNav() {
                             className={`${styles.navLink} ${item.isActive ? styles.navLinkActive : ''}`}
                             aria-current={item.isActive ? 'page' : undefined}
                         >
-                            <span className={styles.navIconWrapper}>
-                                <img src={item.iconSrc} alt='' className={styles.navIcon} />
-                            </span>
+                            <DecorativeIcon
+                                src={item.iconSrc}
+                                wrapperClassName={styles.navIconWrapper}
+                                iconClassName={styles.navIcon}
+                            />
                             <span className={styles.navLabel}>{item.label}</span>
                             {item.badge !== undefined && (
                                 <span className={styles.badge} aria-label={`${item.badge} notification`}>
@@ -123,9 +126,11 @@ function AppBar({
                 aria-controls='mobile-nav-drawer'
                 aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
-                <span className={styles.menuIconWrapper}>
-                    <img src={menuOpen ? iconCloseUrl : iconMenuUrl} alt='' className={styles.menuIcon} />
-                </span>
+                <DecorativeIcon
+                    src={menuOpen ? iconCloseUrl : iconMenuUrl}
+                    wrapperClassName={styles.menuIconWrapper}
+                    iconClassName={styles.menuIcon}
+                />
             </button>
         </header>
     )
@@ -238,9 +243,11 @@ function MobileDrawer({
                         onClick={onClose}
                         aria-label='Close navigation menu'
                     >
-                        <span className={styles.menuIconWrapper}>
-                            <img src={iconCloseUrl} alt='' className={styles.menuIcon} />
-                        </span>
+                        <DecorativeIcon
+                            src={iconCloseUrl}
+                            wrapperClassName={styles.menuIconWrapper}
+                            iconClassName={styles.menuIcon}
+                        />
                     </button>
                 </div>
                 <hr className={styles.drawerDivider} />

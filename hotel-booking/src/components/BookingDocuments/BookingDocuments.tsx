@@ -1,5 +1,6 @@
 import { WelcomeCard } from '../WelcomeCard/WelcomeCard'
 import { StayReceipt } from '../StayReceipt/StayReceipt'
+import { DecorativeIcon } from '../DecorativeIcon/DecorativeIcon'
 import styles from './BookingDocuments.module.css'
 import iconSparkleUrl from '../../assets/images/icon-sparkle.svg'
 import illustrationSunUrl from '../../assets/images/illustration-sun.svg'
@@ -15,13 +16,17 @@ export const BookingDocuments = () => {
                 <WelcomeCard />
             </div>
             <div className={styles.hint}>
-                <span className={styles.hintIconWrapper}>
-                    <img src={iconSparkleUrl} alt='' className={styles.hintIcon} />
-                </span>
+                <DecorativeIcon
+                    src={iconSparkleUrl}
+                    wrapperClassName={styles.hintIconWrapper}
+                    iconClassName={styles.hintIcon}
+                />
                 <span className={styles.hintText}>hover to fan</span>
-                <span className={styles.hintIconWrapper}>
-                    <img src={iconSparkleUrl} alt='' className={styles.hintIcon} />
-                </span>
+                <DecorativeIcon
+                    src={iconSparkleUrl}
+                    wrapperClassName={styles.hintIconWrapper}
+                    iconClassName={styles.hintIcon}
+                />
             </div>
         </section>
     )

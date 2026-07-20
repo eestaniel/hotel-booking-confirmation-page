@@ -1,3 +1,4 @@
+import { useState, useRef, useCallback, type MouseEventHandler } from 'react'
 import iconKey from '../../assets/images/icon-key.svg'
 import iconWifi from '../../assets/images/icon-wifi.svg'
 import iconBreakfast from '../../assets/images/icon-breakfast.svg'
@@ -13,7 +14,7 @@ interface CardData {
     title: string
     subtitle: string
     instructions?: string
-    wifi?: { network: string; password: string }
+    wifiPassword?: string
 }
 
 const CARD_DATA: CardData[] = [
@@ -38,7 +39,7 @@ const CARD_DATA: CardData[] = [
         numberClass: styles.headerNumberWifi,
         title: 'Le Soleil \u00b7 Guest',
         subtitle: 'Password below',
-        wifi: { network: 'Le Soleil \u00b7 Guest', password: 'soleil-2026' },
+        wifiPassword: 'soleil-2026',
     },
     {
         label: 'Breakfast',
@@ -54,6 +55,34 @@ const CARD_DATA: CardData[] = [
     },
 ]
 
+function CopyButton({ password }: { password: string }) {
+    const [label, setLabel] = useState<'COPY' | 'COPIED' | 'COPY FAILED'>('COPY')
+    const timerRef = useRef<ReturnType<typeof setTimeout>>()
+
+    const handleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
+        async (e) => {
+            e.stopPropagation()
+            if (timerRef.current) {
+                clearTimeout(timerRef.current)
+            }
+            try {
+                await navigator.clipboard.writeText(password)
+                setLabel('COPIED')
+            } catch {
+                setLabel('COPY FAILED')
+            }
+            timerRef.current = setTimeout(() => setLabel('COPY'), 2000)
+        },
+        [password],
+    )
+
+    return (
+        <button className={styles.copyButton} type='button' onClick={handleClick} aria-live='polite'>
+            {label}
+        </button>
+    )
+}
+
 export const Cards = () => {
     return (
         <section className={styles.cards} aria-label='Information cards'>
@@ -65,7 +94,7 @@ export const Cards = () => {
                                 <img className={styles.icon} src={card.iconSrc} alt='' aria-hidden='true' />
                             </div>
                         </div>
-                        <span className={`${styles.headerLabel} ${card.labelClass}`}>{card.label}</span>
+                        <h3 className={`${styles.headerLabel} ${card.labelClass}`}>{card.label}</h3>
                         <span className={`${styles.headerNumber} ${card.numberClass}`}>{card.number}</span>
                     </header>
 
@@ -75,19 +104,17 @@ export const Cards = () => {
                             <p className={styles.detailSubtitle}>{card.subtitle}</p>
                         </div>
 
-                        {card.wifi ? (
+                        {card.wifiPassword ? (
                             <div className={styles.wifiInfo}>
                                 <div className={styles.wifiRow}>
                                     <span className={styles.wifiLabel}>Network</span>
-                                    <span className={styles.wifiValue}>{card.wifi.network}</span>
+                                    <span className={styles.wifiValue}>{card.title}</span>
                                 </div>
                                 <div className={styles.wifiRow}>
                                     <span className={styles.wifiLabel}>Password</span>
                                     <div className={styles.passwordField}>
-                                        <span className={styles.passwordValue}>{card.wifi.password}</span>
-                                        <button className={styles.copyButton} type='button'>
-                                            COPY
-                                        </button>
+                                        <span className={styles.passwordValue}>{card.wifiPassword}</span>
+                                        <CopyButton password={card.wifiPassword} />
                                     </div>
                                 </div>
                             </div>
