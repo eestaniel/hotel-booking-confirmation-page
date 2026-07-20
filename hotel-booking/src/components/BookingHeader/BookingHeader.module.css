@@ -127,7 +127,7 @@
 }
 
 .btnOutline:focus-visible {
-    outline: 2px solid var(--blue-500);
+    outline: 2px solid var(--terracotta-600);
     outline-offset: 2px;
 }
 
@@ -146,7 +146,7 @@
 }
 
 .btnFilled:focus-visible {
-    outline: 2px solid var(--blue-500);
+    outline: 2px solid var(--terracotta-600);
     outline-offset: 2px;
 }
 

@@ -42,6 +42,7 @@
     box-shadow: inset -1px 0 var(--neutral-400);
     padding: 20px 16px;
     overflow: visible;
+    backdrop-filter: blur(2px);
 }
 
 @media (min-width: 1024px) {
@@ -355,11 +356,11 @@
 }
 
 .navLink:hover {
-    background: var(--neutral-200);
+    background: var(--neutral-0);
 }
 
 .navLink:focus-visible {
-    outline: 2px solid var(--blue-500);
+    outline: 2px solid var(--terracotta-600);
     outline-offset: 2px;
 }
 
