@@ -1,25 +1,175 @@
+/* ===== Font Faces ===== */
+@font-face {
+    font-family: 'Fraunces';
+    src: url('../assets/fonts/fraunces/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf')
+        format('truetype-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fraunces';
+    src: url('../assets/fonts/fraunces/Fraunces-Italic-VariableFont_SOFT,WONK,opsz,wght.ttf')
+        format('truetype-variations');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('../assets/fonts/dm-sans/DMSans-VariableFont_opsz,wght.ttf')
+        format('truetype-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Mono';
+    src: url('../assets/fonts/dm-mono/DMMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Mono';
+    src: url('../assets/fonts/dm-mono/DMMono-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ===== Design Tokens ===== */
 :root {
+    /* Colors - Neutral */
     --neutral-900: hsl(33, 15%, 15%);
-    --neutral-800: hsl(33°, 22%, 20%);
+    --neutral-800: hsl(33, 22%, 20%);
     --neutral-700: hsl(32, 20%, 29%);
     --neutral-600: hsl(33, 17%, 41%);
-    --neutral-400: hsl(36, 19%, 86%);
-    --neutral-200: hsl(36, 19%, 86%);
-    --neutral-100: hsl(35, 50%, 96%);
-    --neutral-50: hsl(40, 50%, 98%);
+    --neutral-400: hsl(36, 22%, 86%);
+    --neutral-200: hsl(30, 24%, 93%);
+    --neutral-100: hsl(35, 60%, 96%);
+    --neutral-50: hsl(40, 60%, 98%);
     --neutral-0: hsl(0, 0%, 100%);
 
-    --sun-500: hsl(42, 84%, 58%);
-    --sun-300: hsl(42, 84%, 75%);
-    --sun-200: hsl(42, 84%, 75%);
-    --sun-50: hsl(42, 84%, 75%);
+    /* Colors - Sun */
+    --sun-500: hsl(42, 83%, 58%);
+    --sun-300: hsl(44, 84%, 75%);
+    --sun-200: hsl(45, 100%, 74%);
+    --sun-50: hsl(41, 100%, 93%);
 
-    --blue-500: hsl(230, 50%, 56%);
+    /* Colors - Blue */
+    --blue-500: hsl(230, 49%, 56%);
 
+    /* Colors - Terracotta */
     --terracotta-700: hsl(15, 69%, 37%);
     --terracotta-600: hsl(15, 74%, 41%);
     --terracotta-500: hsl(18, 62%, 47%);
     --terracotta-400: hsl(22, 72%, 56%);
 
-    --rose-500: hsl(22, 72%, 56%);
+    /* Colors - Rose */
+    --rose-500: hsl(340, 48%, 52%);
+
+    /* Font Families */
+    --font-fraunces: 'Fraunces', serif;
+    --font-dm-sans: 'DM Sans', sans-serif;
+    --font-dm-mono: 'DM Mono', monospace;
+
+    /* Text Preset 1 — Fraunces Regular 40px / 1.2 / -0.5px */
+    --text-preset-1-size: 2.5rem;
+    --text-preset-1-leading: 1.2;
+    --text-preset-1-tracking: -0.5px;
+    --text-preset-1-weight: 400;
+    --text-preset-1-font: var(--font-fraunces);
+
+    /* Text Preset 2 — Fraunces Regular 32px / 1.2 / -0.25px */
+    --text-preset-2-size: 2rem;
+    --text-preset-2-leading: 1.2;
+    --text-preset-2-tracking: -0.25px;
+    --text-preset-2-weight: 400;
+    --text-preset-2-font: var(--font-fraunces);
+
+    /* Text Preset 3 — Fraunces Regular 24px / 1.4 / -0.2px */
+    --text-preset-3-size: 1.5rem;
+    --text-preset-3-leading: 1.4;
+    --text-preset-3-tracking: -0.2px;
+    --text-preset-3-weight: 400;
+    --text-preset-3-font: var(--font-fraunces);
+
+    /* Text Preset 4 — Fraunces Regular 20px / 1.4 / -0.1px */
+    --text-preset-4-size: 1.25rem;
+    --text-preset-4-leading: 1.4;
+    --text-preset-4-tracking: -0.1px;
+    --text-preset-4-weight: 400;
+    --text-preset-4-font: var(--font-fraunces);
+
+    /* Text Preset 5 — DM Sans Regular 14px / 1.4 / 0 */
+    --text-preset-5-size: 0.875rem;
+    --text-preset-5-leading: 1.4;
+    --text-preset-5-tracking: 0;
+    --text-preset-5-weight: 400;
+    --text-preset-5-font: var(--font-dm-sans);
+
+    /* Text Preset 5 Medium — DM Sans Medium 14px / 1.2 / 0 */
+    --text-preset-5-medium-size: 0.875rem;
+    --text-preset-5-medium-leading: 1.2;
+    --text-preset-5-medium-tracking: 0;
+    --text-preset-5-medium-weight: 500;
+    --text-preset-5-medium-font: var(--font-dm-sans);
+
+    /* Text Preset 5 SemiBold — DM Sans SemiBold 14px / 1.2 / 0.3px */
+    --text-preset-5-semibold-size: 0.875rem;
+    --text-preset-5-semibold-leading: 1.2;
+    --text-preset-5-semibold-tracking: 0.3px;
+    --text-preset-5-semibold-weight: 600;
+    --text-preset-5-semibold-font: var(--font-dm-sans);
+
+    /* Text Preset 6 — DM Mono Medium 14px / 1.4 / 2px uppercase */
+    --text-preset-6-size: 0.875rem;
+    --text-preset-6-leading: 1.4;
+    --text-preset-6-tracking: 2px;
+    --text-preset-6-weight: 500;
+    --text-preset-6-font: var(--font-dm-mono);
+    --text-preset-6-transform: uppercase;
+
+    /* Text Preset 7 — DM Sans Regular 12px / 1.2 / 0.4px */
+    --text-preset-7-size: 0.75rem;
+    --text-preset-7-leading: 1.2;
+    --text-preset-7-tracking: 0.4px;
+    --text-preset-7-weight: 400;
+    --text-preset-7-font: var(--font-dm-sans);
+
+    /* Text Preset 8 — DM Mono Regular 12px / 1.4 / 2px uppercase */
+    --text-preset-8-size: 0.75rem;
+    --text-preset-8-leading: 1.4;
+    --text-preset-8-tracking: 2px;
+    --text-preset-8-weight: 400;
+    --text-preset-8-font: var(--font-dm-mono);
+    --text-preset-8-transform: uppercase;
+
+    /* Text Preset 9 — DM Mono Regular 12px / 1.4 / 0 */
+    --text-preset-9-size: 0.75rem;
+    --text-preset-9-leading: 1.4;
+    --text-preset-9-tracking: 0;
+    --text-preset-9-weight: 400;
+    --text-preset-9-font: var(--font-dm-mono);
+
+    /* Text Preset 10 — DM Mono Regular 10px / 1.4 / 1px uppercase */
+    --text-preset-10-size: 0.625rem;
+    --text-preset-10-leading: 1.4;
+    --text-preset-10-tracking: 1px;
+    --text-preset-10-weight: 400;
+    --text-preset-10-font: var(--font-dm-mono);
+    --text-preset-10-transform: uppercase;
+
+    /* Text Preset 11 — Fraunces Regular 10px / 1.4 / 1px uppercase */
+    --text-preset-11-size: 0.625rem;
+    --text-preset-11-leading: 1.4;
+    --text-preset-11-tracking: 1px;
+    --text-preset-11-weight: 400;
+    --text-preset-11-font: var(--font-fraunces);
+    --text-preset-11-transform: uppercase;
 }

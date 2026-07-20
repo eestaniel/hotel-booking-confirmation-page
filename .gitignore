@@ -46,3 +46,5 @@ Thumbs.db
 README-template.md
 style-guide.md
 /AGENTS.md
+/docs
+.gitignore
