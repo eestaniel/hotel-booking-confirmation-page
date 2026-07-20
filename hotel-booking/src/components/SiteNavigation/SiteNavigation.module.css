@@ -3,12 +3,21 @@
 .shell {
     display: flex;
     flex-direction: column;
+    gap: 1.25rem;
     min-height: 100dvh;
+    overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+    .shell {
+        gap: 1.5rem;
+    }
 }
 
 @media (min-width: 1024px) {
     .shell {
         flex-direction: row;
+        gap: 0;
     }
 }
 
@@ -70,8 +79,14 @@
     height: 74px;
     flex: 0 0 auto;
     padding: 16px;
-    border-bottom: 1px solid var(--neutral-400);
+    box-shadow: inset 0 -1px var(--neutral-400);
     overflow: visible;
+}
+
+@media (min-width: 768px) {
+    .appBar {
+        padding: 16px 24px;
+    }
 }
 
 /* ===== Menu Button ===== */
@@ -122,6 +137,13 @@
 .menuButton:focus-visible {
     outline: 2px solid var(--blue-500);
     outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+    .menuButton {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 /* ===== Drawer Overlay ===== */
@@ -293,6 +315,7 @@
     justify-content: flex-start;
     gap: 2px;
     width: 100%;
+    flex: 0 0 auto;
     overflow: visible;
 }
 

@@ -28,6 +28,14 @@
     transform: rotate(-2deg);
 }
 
+@media (min-width: 768px) {
+    .card {
+        width: 21.25rem;
+        height: 26.25rem;
+        transform: rotate(-4deg);
+    }
+}
+
 /* ===== Header (label + icon) ===== */
 
 .header {

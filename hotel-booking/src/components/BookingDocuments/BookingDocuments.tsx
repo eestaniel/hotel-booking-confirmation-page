@@ -6,8 +6,8 @@ export const BookingDocuments = () => {
     return (
         <section className={styles.section} aria-label='Booking documents'>
             <div className={styles.container}>
-                <WelcomeCard />
                 <StayReceipt />
+                <WelcomeCard />
             </div>
         </section>
     )
