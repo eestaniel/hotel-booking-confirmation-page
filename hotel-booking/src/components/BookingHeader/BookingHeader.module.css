@@ -1,0 +1,138 @@
+/* ===== Booking Header ===== */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 0;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.headerInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+    width: 100%;
+    height: 4.5rem;
+    flex: 0 0 auto;
+}
+
+@media (min-width: 768px) {
+    .header {
+        padding: 24px 0 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .header {
+        padding: 40px 0 0;
+    }
+}
+
+/* ===== Status ===== */
+
+.status {
+    font-family: var(--text-preset-8-font);
+    font-size: var(--text-preset-8-size);
+    font-weight: var(--text-preset-8-weight);
+    line-height: var(--text-preset-8-leading);
+    letter-spacing: var(--text-preset-8-tracking);
+    text-transform: var(--text-preset-8-transform);
+    color: var(--neutral-600);
+}
+
+/* ===== Heading ===== */
+
+.heading {
+    font-family: var(--text-preset-1-font);
+    font-size: var(--text-preset-1-size);
+    font-weight: var(--text-preset-1-weight);
+    line-height: var(--text-preset-1-leading);
+    letter-spacing: var(--text-preset-1-tracking);
+    color: var(--neutral-900);
+}
+
+/* ===== Action Buttons ===== */
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    width: 100%;
+    height: 37px;
+    flex: 0 0 auto;
+}
+
+.btnOutline,
+.btnFilled {
+    flex: 1 1 0;
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    height: 37px;
+    border-radius: 999px;
+    font-family: var(--text-preset-5-semibold-font);
+    font-size: var(--text-preset-5-semibold-size);
+    font-weight: var(--text-preset-5-semibold-weight);
+    line-height: var(--text-preset-5-semibold-leading);
+    letter-spacing: var(--text-preset-5-semibold-tracking);
+    cursor: pointer;
+    transition:
+        background-color 150ms ease,
+        box-shadow 150ms ease;
+}
+
+/* ===== Outline Button (Print receipt) ===== */
+
+.btnOutline {
+    background: transparent;
+    border: 0;
+    box-shadow: inset 0 0 0 1px var(--neutral-400);
+    color: var(--neutral-900);
+}
+
+.btnOutline:hover {
+    background: var(--neutral-200);
+    box-shadow: inset 0 0 0 1px var(--neutral-600);
+}
+
+.btnOutline:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: 2px;
+}
+
+/* ===== Filled Button (Add to calendar) ===== */
+
+.btnFilled {
+    background: var(--neutral-900);
+    border: 0;
+    box-shadow: inset 0 0 0 1px var(--neutral-900);
+    color: var(--sun-50);
+}
+
+.btnFilled:hover {
+    background: var(--neutral-800);
+    box-shadow: inset 0 0 0 1px var(--neutral-800);
+}
+
+.btnFilled:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: 2px;
+}
+
+/* ===== Reduce motion ===== */
+
+@media (prefers-reduced-motion: reduce) {
+    .btnOutline,
+    .btnFilled {
+        transition: none;
+    }
+}
