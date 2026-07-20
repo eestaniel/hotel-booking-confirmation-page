@@ -57,7 +57,7 @@ const CARD_DATA: CardData[] = [
 
 function CopyButton({ password }: { password: string }) {
     const [label, setLabel] = useState<'COPY' | 'COPIED' | 'COPY FAILED'>('COPY')
-    const timerRef = useRef<ReturnType<typeof setTimeout>>()
+    const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
         async (e) => {
