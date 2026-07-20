@@ -3,88 +3,100 @@ import iconWifi from '../../assets/images/icon-wifi.svg'
 import iconBreakfast from '../../assets/images/icon-breakfast.svg'
 import styles from './Cards.module.css'
 
+interface CardData {
+    label: string
+    number: string
+    iconSrc: string
+    overlayClass: string
+    labelClass: string
+    numberClass: string
+    title: string
+    subtitle: string
+    instructions?: string
+    wifi?: { network: string; password: string }
+}
+
+const CARD_DATA: CardData[] = [
+    {
+        label: 'Arrival',
+        number: '01',
+        iconSrc: iconKey,
+        overlayClass: styles.overlayArrival,
+        labelClass: styles.headerLabelArrival,
+        numberClass: styles.headerNumberArrival,
+        title: 'Check-in from 15:00',
+        subtitle: 'Sat, 25 April',
+        instructions:
+            'Ring the brass bell by the blue door. If we\u2019re at the market, the key is in the terracotta pot by the olive tree.',
+    },
+    {
+        label: 'Wifi',
+        number: '02',
+        iconSrc: iconWifi,
+        overlayClass: styles.overlayWifi,
+        labelClass: styles.headerLabelWifi,
+        numberClass: styles.headerNumberWifi,
+        title: 'Le Soleil \u00b7 Guest',
+        subtitle: 'Password below',
+        wifi: { network: 'Le Soleil \u00b7 Guest', password: 'soleil-2026' },
+    },
+    {
+        label: 'Breakfast',
+        number: '03',
+        iconSrc: iconBreakfast,
+        overlayClass: styles.overlayBreakfast,
+        labelClass: styles.headerLabelBreakfast,
+        numberClass: styles.headerNumberBreakfast,
+        title: 'Served 8 \u2013 10:30',
+        subtitle: 'On the terrace',
+        instructions:
+            'Fresh figs, Marseille honey, pain au levain, and espresso. Gluten-free option? Leave a note the night before.',
+    },
+]
+
 export const Cards = () => {
     return (
         <section className={styles.cards} aria-label='Information cards'>
-            {/* Card 1 — Arrival */}
-            <article className={styles.card}>
-                <header className={styles.header}>
-                    <div className={`${styles.overlay} ${styles.overlayArrival}`}>
-                        <div className={styles.iconWrapper}>
-                            <img className={styles.icon} src={iconKey} alt='' aria-hidden='true' />
-                        </div>
-                    </div>
-                    <span className={`${styles.headerLabel} ${styles.headerLabelArrival}`}>Arrival</span>
-                    <span className={`${styles.headerNumber} ${styles.headerNumberArrival}`}>01</span>
-                </header>
-                <div className={styles.details}>
-                    <div className={styles.detailBlock}>
-                        <p className={styles.detailTitle}>Check-in from 15:00</p>
-                        <p className={styles.detailSubtitle}>Sat, 25 April</p>
-                    </div>
-                    <p className={styles.instructions}>
-                        Ring the brass bell by the blue door. If we&rsquo;re at the market, the key is in the terracotta
-                        pot by the olive tree.
-                    </p>
-                </div>
-            </article>
-
-            {/* Card 2 — Wifi */}
-            <article className={styles.card}>
-                <header className={styles.header}>
-                    <div className={`${styles.overlay} ${styles.overlayWifi}`}>
-                        <div className={styles.iconWrapper}>
-                            <img className={styles.icon} src={iconWifi} alt='' aria-hidden='true' />
-                        </div>
-                    </div>
-                    <span className={`${styles.headerLabel} ${styles.headerLabelWifi}`}>Wifi</span>
-                    <span className={`${styles.headerNumber} ${styles.headerNumberWifi}`}>02</span>
-                </header>
-                <div className={styles.details}>
-                    <div className={styles.detailBlock}>
-                        <p className={styles.detailTitle}>Le Soleil &middot; Guest</p>
-                        <p className={styles.detailSubtitle}>Password below</p>
-                    </div>
-                    <div className={styles.wifiInfo}>
-                        <div className={styles.wifiRow}>
-                            <span className={styles.wifiLabel}>Network</span>
-                            <span className={styles.wifiValue}>Le Soleil &middot; Guest</span>
-                        </div>
-                        <div className={styles.wifiRow}>
-                            <span className={styles.wifiLabel}>Password</span>
-                            <div className={styles.passwordField}>
-                                <span className={styles.passwordValue}>soleil-2026</span>
-                                <button className={styles.copyButton} type='button'>
-                                    COPY
-                                </button>
+            {CARD_DATA.map((card) => (
+                <article key={card.number} className={styles.card}>
+                    <header className={styles.header}>
+                        <div className={`${styles.overlay} ${card.overlayClass}`}>
+                            <div className={styles.iconWrapper}>
+                                <img className={styles.icon} src={card.iconSrc} alt='' aria-hidden='true' />
                             </div>
                         </div>
-                    </div>
-                </div>
-            </article>
+                        <span className={`${styles.headerLabel} ${card.labelClass}`}>{card.label}</span>
+                        <span className={`${styles.headerNumber} ${card.numberClass}`}>{card.number}</span>
+                    </header>
 
-            {/* Card 3 — Breakfast */}
-            <article className={styles.card}>
-                <header className={styles.header}>
-                    <div className={`${styles.overlay} ${styles.overlayBreakfast}`}>
-                        <div className={styles.iconWrapper}>
-                            <img className={styles.icon} src={iconBreakfast} alt='' aria-hidden='true' />
+                    <div className={styles.details}>
+                        <div className={styles.detailBlock}>
+                            <p className={styles.detailTitle}>{card.title}</p>
+                            <p className={styles.detailSubtitle}>{card.subtitle}</p>
                         </div>
+
+                        {card.wifi ? (
+                            <div className={styles.wifiInfo}>
+                                <div className={styles.wifiRow}>
+                                    <span className={styles.wifiLabel}>Network</span>
+                                    <span className={styles.wifiValue}>{card.wifi.network}</span>
+                                </div>
+                                <div className={styles.wifiRow}>
+                                    <span className={styles.wifiLabel}>Password</span>
+                                    <div className={styles.passwordField}>
+                                        <span className={styles.passwordValue}>{card.wifi.password}</span>
+                                        <button className={styles.copyButton} type='button'>
+                                            COPY
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : (
+                            <p className={styles.instructions}>{card.instructions}</p>
+                        )}
                     </div>
-                    <span className={`${styles.headerLabel} ${styles.headerLabelBreakfast}`}>Breakfast</span>
-                    <span className={`${styles.headerNumber} ${styles.headerNumberBreakfast}`}>03</span>
-                </header>
-                <div className={styles.details}>
-                    <div className={styles.detailBlock}>
-                        <p className={styles.detailTitle}>Served 8 &ndash; 10:30</p>
-                        <p className={styles.detailSubtitle}>On the terrace</p>
-                    </div>
-                    <p className={styles.instructions}>
-                        Fresh figs, Marseille honey, pain au levain, and espresso. Gluten-free option? Leave a note the
-                        night before.
-                    </p>
-                </div>
-            </article>
+                </article>
+            ))}
         </section>
     )
 }
