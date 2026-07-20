@@ -62,11 +62,16 @@
 
 .appBar {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
+    width: 100%;
     height: 74px;
+    flex: 0 0 auto;
     padding: 16px;
     border-bottom: 1px solid var(--neutral-400);
+    overflow: visible;
 }
 
 /* ===== Menu Button ===== */
@@ -74,16 +79,33 @@
 .menuButton {
     position: relative;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     width: 32px;
     height: 32px;
+    flex: 0 0 auto;
     padding: 0;
     border: 1px solid var(--neutral-400);
     border-radius: 4px;
     background: transparent;
     cursor: pointer;
-    flex-shrink: 0;
+    overflow: visible;
+}
+
+.menuIconWrapper {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+    overflow: hidden;
+}
+
+.menuIcon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* Expand touch target to 44px without changing visual size */
@@ -164,7 +186,7 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    padding: 16px 16px 24px;
+    padding: 16px;
 }
 
 @media (min-width: 768px) {
@@ -176,16 +198,19 @@
 .drawerCloseButton {
     position: relative;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     width: 32px;
     height: 32px;
+    flex: 0 0 auto;
     padding: 0;
     border: 1px solid var(--neutral-400);
     border-radius: 4px;
     background: transparent;
     cursor: pointer;
-    flex-shrink: 0;
+    overflow: visible;
 }
 
 /* Expand touch target to 44px without changing visual size */
@@ -233,8 +258,18 @@
 .logo {
     display: inline-flex;
     align-items: center;
+    width: 107px;
+    height: 42px;
+    flex: 0 0 auto;
+    overflow: hidden;
     text-decoration: none;
-    flex-shrink: 0;
+}
+
+.logoImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .logo:focus-visible {
@@ -246,20 +281,31 @@
 /* ===== Primary Nav ===== */
 
 .nav {
-    /* container */
+    width: 100%;
+    flex: 0 0 auto;
+    overflow: visible;
 }
 
 .navList {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2px;
+    width: 100%;
+    overflow: visible;
 }
 
 .navLink {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
     gap: 8px;
-    padding: 8px 12px;
+    width: 100%;
+    height: 40px;
+    flex: 0 0 auto;
+    padding: 10px 12px;
     border-radius: 8px;
     text-decoration: none;
     color: var(--neutral-800);
@@ -268,7 +314,14 @@
     font-weight: var(--text-preset-5-medium-weight);
     line-height: var(--text-preset-5-medium-leading);
     letter-spacing: var(--text-preset-5-medium-tracking);
+    overflow: visible;
     transition: background-color 150ms ease;
+}
+
+.navItem {
+    width: 100%;
+    height: 40px;
+    flex: 0 0 auto;
 }
 
 .navLink:hover {
@@ -285,26 +338,39 @@
     position: relative;
 }
 
-.navIcon {
-    flex-shrink: 0;
+.navIconWrapper {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+    overflow: hidden;
     opacity: 0.7;
 }
 
-.navLinkActive .navIcon {
+.navIcon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.navLinkActive .navIconWrapper {
     opacity: 1;
 }
 
 .navLabel {
     flex: 1;
+    min-width: 0;
 }
 
 .badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 20px;
-    height: 20px;
-    padding: 0 5px;
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+    padding: 0;
     border-radius: 999px;
     background: var(--terracotta-600);
     color: var(--neutral-0);
@@ -322,28 +388,36 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 6px;
+    width: 100%;
+    height: 102px;
+    flex: 0 0 auto;
     padding: 12px 16px;
     border-radius: 16px;
     background: var(--sun-300);
     box-shadow:
         0 10px 24px -16px hsl(15 69% 37% / 0.4),
         0 1px 0 hsl(0 0% 0% / 0.04);
+    overflow: hidden;
+}
+
+.weatherIconWrapper {
+    position: absolute;
+    top: -28px;
+    right: -10px;
+    width: 80px;
+    height: 80px;
+    flex: 0 0 auto;
+    overflow: hidden;
 }
 
 .weatherIcon {
-    position: absolute;
-    top: -28px;
-    right: 0;
-    width: 80px;
-    height: 80px;
-    flex-shrink: 0;
-}
-
-.weatherInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .weatherLocation {
@@ -379,20 +453,28 @@
 .footer {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 20px;
+    width: 100%;
     margin-top: auto;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .footerInfo {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 10px;
-    padding-top: 16px;
+    width: 100%;
+    padding-top: 15px;
     border-top: 1px dashed var(--neutral-400);
+    overflow: visible;
 }
 
 .footerLine {
+    width: 100%;
     font-family: var(--text-preset-10-font);
     font-size: var(--text-preset-10-size);
     font-weight: var(--text-preset-10-weight);

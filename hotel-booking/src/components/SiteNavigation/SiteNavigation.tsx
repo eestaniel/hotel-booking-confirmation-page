@@ -30,7 +30,7 @@ const NAV_ITEMS: NavItem[] = [
 function Logo() {
     return (
         <a href='#' className={styles.logo} aria-label='Maison Soleil home'>
-            <img src={logoUrl} alt='' width={107} height={42} />
+            <img src={logoUrl} alt='' className={styles.logoImage} />
         </a>
     )
 }
@@ -40,13 +40,15 @@ function PrimaryNav() {
         <nav className={styles.nav} aria-label='Primary navigation'>
             <ul className={styles.navList}>
                 {NAV_ITEMS.map((item) => (
-                    <li key={item.label}>
+                    <li key={item.label} className={styles.navItem}>
                         <a
                             href={item.href}
                             className={`${styles.navLink} ${item.isActive ? styles.navLinkActive : ''}`}
                             aria-current={item.isActive ? 'page' : undefined}
                         >
-                            <img src={item.iconSrc} alt='' width={20} height={20} className={styles.navIcon} />
+                            <span className={styles.navIconWrapper}>
+                                <img src={item.iconSrc} alt='' className={styles.navIcon} />
+                            </span>
                             <span className={styles.navLabel}>{item.label}</span>
                             {item.badge !== undefined && (
                                 <span className={styles.badge} aria-label={`${item.badge} notification`}>
@@ -65,12 +67,12 @@ function Footer() {
     return (
         <div className={styles.footer}>
             <div className={styles.weatherCard}>
-                <img src={iconWeatherUrl} alt='' width={80} height={80} className={styles.weatherIcon} />
-                <div className={styles.weatherInfo}>
-                    <p className={styles.weatherLocation}>Today in Cassis</p>
-                    <p className={styles.weatherTemp}>27°</p>
-                    <p className={styles.weatherDesc}>Sunny · light breeze</p>
+                <div className={styles.weatherIconWrapper}>
+                    <img src={iconWeatherUrl} alt='' className={styles.weatherIcon} />
                 </div>
+                <p className={styles.weatherLocation}>Today in Cassis</p>
+                <p className={styles.weatherTemp}>27°</p>
+                <p className={styles.weatherDesc}>Sunny · light breeze</p>
             </div>
             <div className={styles.footerInfo}>
                 <p className={styles.footerLine}>Est. 1987</p>
@@ -111,7 +113,9 @@ function AppBar({
                 aria-controls='mobile-nav-drawer'
                 aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
-                <img src={menuOpen ? iconCloseUrl : iconMenuUrl} alt='' width={20} height={20} />
+                <span className={styles.menuIconWrapper}>
+                    <img src={menuOpen ? iconCloseUrl : iconMenuUrl} alt='' className={styles.menuIcon} />
+                </span>
             </button>
         </header>
     )
@@ -224,7 +228,9 @@ function MobileDrawer({
                         onClick={onClose}
                         aria-label='Close navigation menu'
                     >
-                        <img src={iconCloseUrl} alt='' width={20} height={20} />
+                        <span className={styles.menuIconWrapper}>
+                            <img src={iconCloseUrl} alt='' className={styles.menuIcon} />
+                        </span>
                     </button>
                 </div>
                 <hr className={styles.drawerDivider} />
